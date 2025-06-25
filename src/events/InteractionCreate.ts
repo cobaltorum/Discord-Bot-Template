@@ -9,7 +9,7 @@ import ComponentManager from "@managers/client/ComponentManager.js";
 
 export default class InteractionCreate extends EventListener {
 	constructor() {
-		super(Events.InteractionCreate, false);
+		super(Events.InteractionCreate);
 	}
 
 	async execute(interaction: Interaction): Promise<unknown> {

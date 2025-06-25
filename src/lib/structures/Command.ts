@@ -93,9 +93,10 @@ export default abstract class Command {
 	 * Handler that is called when the command is executed as a message command.
 	 *
 	 * @param message The message that triggered the command.
+	 * @param args The argument parser for the command.
 	 */
 
-	public executeMessage?(message: Message<true>): Awaitable<unknown>;
+	public executeMessage?(message: Message<true>, args: ArgsC): Awaitable<unknown>;
 
 	/**
 	 * Get the argument handler for the command.

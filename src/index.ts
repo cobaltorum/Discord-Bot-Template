@@ -27,6 +27,10 @@ async function main(): Promise<void> {
 		throw new Error("Missing BOT_ID environment variable.");
 	}
 
+	if (!process.env.DEFAULT_PREFIX) {
+		throw new Error("Missing DEFAULT_PREFIX environment variable.");
+	}
+
 	// Cache all commands.
 	await CommandManager.cache();
 

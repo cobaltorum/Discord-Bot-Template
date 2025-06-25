@@ -186,6 +186,29 @@ export class Args {
 	}
 
 	/**
+	 * Retrieves a boolean from the available arguments.
+	 */
+	public getBoolean(): boolean | null {
+		if (this.parser.finished) {
+			return null;
+		}
+
+		const trueValues = ["true", "yes", "y", "on", "enable", "enabled", "positive"];
+		const falseValues = ["false", "no", "n", "off", "disable", "disabled", "negative"];
+
+		return this.parser
+			.singleParse<boolean | null, null>(parameter => {
+				const value = parameter.trim().toLowerCase();
+
+				if (trueValues.includes(value)) return Result.ok(true);
+				if (falseValues.includes(value)) return Result.ok(false);
+
+				return Result.ok(null);
+			})
+			.unwrap();
+	}
+
+	/**
 	 * Retrieves all of the remaining arguments as a single string.
 	 */
 

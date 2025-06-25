@@ -26,7 +26,7 @@ export default abstract class EventListener {
 	 * @param event The event that this listener listens for.
 	 * @param once Whether the event should only be listened for once.
 	 */
-	public constructor(event: Events | string, once: boolean) {
+	public constructor(event: Events | string, once?: boolean) {
 		this.event = event;
 		this.once = once ?? false;
 	}
