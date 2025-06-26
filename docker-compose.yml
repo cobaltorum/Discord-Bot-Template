@@ -1,11 +1,11 @@
 networks:
     bridge:
-        name: my_bridge
+        name: bot_bridge
         driver: bridge
 
 services:
     bot:
-        container_name: my_bot
+        container_name: bot
         build:
             context: .
             dockerfile: Dockerfile
