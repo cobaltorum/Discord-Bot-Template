@@ -1,4 +1,4 @@
-# TypeScript Bot Starter Template
+# Discord Bot TypeScript Template
 
 A simple, plug-and-play template designed for building Discord bots using TypeScript and Discord.js.
 
