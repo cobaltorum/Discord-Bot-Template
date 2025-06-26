@@ -14,6 +14,8 @@
 		"target": "ES2024",
 		"outDir": "dist",
 		"rootDir": "src",
+		"incremental": true,
+		"tsBuildInfoFile": "dist/.tsbuildinfo",
 
 		// Source Map Options
 		"sourceMap": true,
@@ -33,7 +35,6 @@
 		// Additional Options
 		"pretty": true,
 		"removeComments": false,
-		"preserveConstEnums": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 
