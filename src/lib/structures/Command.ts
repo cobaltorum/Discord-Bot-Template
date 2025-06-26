@@ -138,9 +138,10 @@ export default abstract class Command {
  * @example
  * ```ts
  * export const CommandCategory = {
- *      Fun: "Fun",
  *      Utility: "Utility",
- *      Moderation: "Moderation",
+ *      General: "General",
+ * 		Developer: "Developer",
+ * 		Fun: "Fun"
  * } as const;
  * export type CommandCategory = (typeof CommandCategory)[keyof typeof CommandCategory];
  * ```
@@ -148,7 +149,8 @@ export default abstract class Command {
 
 export const CommandCategory = {
 	Utility: "Utility",
-	General: "General"
+	General: "General",
+	Developer: "Developer"
 } as const;
 export type CommandCategory = (typeof CommandCategory)[keyof typeof CommandCategory];
 

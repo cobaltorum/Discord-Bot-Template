@@ -7,14 +7,14 @@ import {
 
 import { selectMenuOptions } from "@utils/Constants.js";
 
-import Command from "@structures/Command.js";
+import Command, { CommandCategory } from "@structures/Command.js";
 
 export default class Color extends Command {
 	constructor() {
 		super({
 			name: "color",
 			type: ApplicationCommandType.ChatInput,
-			category: "General",
+			category: CommandCategory.General,
 			description: "Pick your favorite color."
 		});
 	}

@@ -31,6 +31,10 @@ async function main(): Promise<void> {
 		throw new Error("Missing DEFAULT_PREFIX environment variable.");
 	}
 
+	if (!process.env.DEVELOPER_ID) {
+		throw new Error("Missing DEVELOPER_ID environment variable.");
+	}
+
 	// Cache all commands.
 	await CommandManager.cache();
 
