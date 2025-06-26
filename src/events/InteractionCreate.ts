@@ -17,10 +17,10 @@ export default class InteractionCreate extends EventListener {
 			return interaction.isRepliable()
 				? interaction.reply({
 						content: `Interactions outside of guilds are not supported.`
-				  })
+					})
 				: interaction.respond([
 						{ name: "Interactions outside of guilds are not supported.", value: "unsupported" }
-				  ]);
+					]);
 		}
 
 		/**
@@ -78,11 +78,11 @@ export default class InteractionCreate extends EventListener {
 			return interaction.deferred || interaction.replied
 				? interaction.editReply({
 						content: `An error occurred while executing the interaction.`
-				  })
+					})
 				: interaction.reply({
 						content: `An error occurred while executing the interaction.`,
 						flags: MessageFlags.Ephemeral
-				  });
+					});
 		}
 	}
 }
