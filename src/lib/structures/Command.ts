@@ -163,7 +163,7 @@ export type CommandOptions = ApplicationCommandData & {
 	 * These are alternative names that can be used to invoke the command.
 	 */
 
-	aliases: string[];
+	aliases?: string[];
 
 	/**
 	 * The category of the command.
