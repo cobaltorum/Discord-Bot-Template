@@ -53,12 +53,12 @@ async function main(): Promise<void> {
 }
 
 if (process.env.NODE_ENV !== "test") {
-	// prettier-ignore
-	main()
-		.catch(error => {
-			Logger.error(error);
-			process.exit(1);
-		});
+	try {
+		void main();
+	} catch (error) {
+		Logger.error(error);
+		process.exit(1);
+	}
 
 	process.on("unhandledRejection", error => {
 		Logger.error(`Unhandled Rejection:`, error);
