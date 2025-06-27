@@ -1,4 +1,5 @@
-import { Colors, EmbedBuilder, Message, version as djsVersion } from "discord.js";
+import { Client, Colors, EmbedBuilder, Message } from "discord.js";
+import { formatTime } from "@utils/index.js";
 
 import Command, { CommandCategory } from "@structures/Command.js";
 
@@ -19,6 +20,7 @@ export default class Stats extends Command {
 		}
 
 		const { rss, heapUsed, heapTotal } = Stats._getMemoryStats();
+		const { clientUptime, processUptime } = Stats._getUptimeStats(this.client);
 
 		const embed = new EmbedBuilder()
 			.setColor(Colors.NotQuiteBlack)
@@ -33,8 +35,8 @@ export default class Stats extends Command {
 					inline: true
 				},
 				{
-					name: "Node.JS / Discord.js",
-					value: `${process.version} / v${djsVersion}`,
+					name: "Uptime (Client / Proces)",
+					value: `${clientUptime} / ${processUptime}`,
 					inline: true
 				},
 				{
@@ -58,6 +60,16 @@ export default class Stats extends Command {
 			rss: (rss / 1024 / 1024).toFixed(2),
 			heapUsed: (heapUsed / 1024 / 1024).toFixed(2),
 			heapTotal: (heapTotal / 1024 / 1024).toFixed(2)
+		};
+	}
+
+	private static _getUptimeStats(client: Client<true>): { clientUptime: string; processUptime: string } {
+		const msClientUptime = Math.floor(client.uptime);
+		const msProcessUptime = Math.floor(process.uptime() * 1000);
+
+		return {
+			clientUptime: formatTime(msClientUptime),
+			processUptime: formatTime(msProcessUptime)
 		};
 	}
 }
