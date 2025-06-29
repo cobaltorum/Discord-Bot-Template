@@ -8,7 +8,7 @@ export default class Ready extends EventListener {
 		super(Events.ClientReady, true);
 	}
 
-	override async execute() {
+	async execute() {
 		return Logger.success(`Successfully logged in as ${this.client.user.tag}!`);
 	}
 }

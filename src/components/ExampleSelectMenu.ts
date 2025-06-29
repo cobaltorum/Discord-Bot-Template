@@ -7,7 +7,7 @@ export default class ExampleSelectMenu extends Component {
 		super({ startsWith: "select-menu" });
 	}
 
-	override async execute(interaction: StringSelectMenuInteraction<"cached">) {
+	async execute(interaction: StringSelectMenuInteraction<"cached">) {
 		const [selected] = interaction.values;
 		return interaction.reply({
 			content: selected,

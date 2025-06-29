@@ -9,7 +9,7 @@ export default class MessageCreate extends EventListener {
 		super(Events.MessageCreate);
 	}
 
-	override async execute(message: Message<true>) {
+	async execute(message: Message<true>) {
 		if (message.author.bot || !message.member || message.webhookId) return;
 		if (!message.channel.permissionsFor(message.guild.members.me!)) return;
 

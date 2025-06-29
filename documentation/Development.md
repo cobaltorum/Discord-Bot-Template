@@ -60,7 +60,7 @@ export default class Example extends Component {
 		super({ startsWith: "example" });
 	}
 
-	override async execute(interaction: ButtonInteraction<"cached">) {
+	async execute(interaction: ButtonInteraction<"cached">) {
 		return interaction.reply({
 			content: `You clicked a buttton.`
 		});
@@ -105,7 +105,7 @@ export default class Example extends EventListener {
 		super(Events.GuildCreate);
 	}
 
-	override async execute(guild: Guild) {
+	async execute(guild: Guild) {
 		Logger.info(`The client joined a guild with the name: ${guild.name}!`);
 	}
 }
