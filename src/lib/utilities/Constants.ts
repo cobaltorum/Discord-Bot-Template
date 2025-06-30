@@ -1,4 +1,4 @@
-export const selectMenuOptions: { label: string; value: string; emoji: string }[] = [
+export const SelectMenuOptions: { label: string; value: string; emoji: string }[] = [
 	{
 		label: "Green",
 		value: `You like green.`,
