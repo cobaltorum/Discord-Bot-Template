@@ -33,7 +33,7 @@ export default class Color extends Command {
 
 	override async executeInteraction(interaction: ChatInputCommandInteraction) {
 		const selectMenu = new StringSelectMenuBuilder()
-			.setCustomId("select-menu")
+			.setCustomId("color-menu")
 			.setPlaceholder("Select color...")
 			.setOptions(SelectMenuOptions);
 

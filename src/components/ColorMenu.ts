@@ -4,7 +4,7 @@ import Component from "@structures/Component.js";
 
 export default class ExampleSelectMenu extends Component {
 	constructor() {
-		super({ startsWith: "select-menu" });
+		super({ startsWith: "color-menu" });
 	}
 
 	async execute(interaction: StringSelectMenuInteraction) {

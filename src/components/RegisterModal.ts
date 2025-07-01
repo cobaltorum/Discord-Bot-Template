@@ -4,7 +4,7 @@ import Component from "@structures/Component.js";
 
 export default class ExampleModal extends Component {
 	constructor() {
-		super({ startsWith: "modal" });
+		super({ startsWith: "register" });
 	}
 
 	async execute(interaction: ModalSubmitInteraction) {

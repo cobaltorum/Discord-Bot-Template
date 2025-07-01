@@ -41,7 +41,7 @@ export default class Register extends Command {
 			.setStyle(TextInputStyle.Paragraph);
 
 		const actionRow = new ActionRowBuilder<TextInputBuilder>().setComponents(usernameInput);
-		const modal = new ModalBuilder().setCustomId("modal").setTitle(`Registering`).setComponents(actionRow);
+		const modal = new ModalBuilder().setCustomId("register").setTitle(`Registering`).setComponents(actionRow);
 
 		return interaction.showModal(modal);
 	}
