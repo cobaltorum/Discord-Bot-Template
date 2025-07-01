@@ -7,7 +7,7 @@ export default class ExampleModal extends Component {
 		super({ startsWith: "modal" });
 	}
 
-	async execute(interaction: ModalSubmitInteraction<"cached">) {
+	async execute(interaction: ModalSubmitInteraction) {
 		const username = interaction.fields.getTextInputValue("username");
 
 		return interaction.reply({

@@ -33,7 +33,7 @@ export default abstract class Component {
 	public abstract execute(interaction: ComponentInteraction): Awaitable<unknown>;
 }
 
-export type ComponentInteraction = MessageComponentInteraction<"cached"> | ModalSubmitInteraction<"cached">;
+export type ComponentInteraction = MessageComponentInteraction | ModalSubmitInteraction;
 export type CustomID =
 	| string
 	| { startsWith: string }

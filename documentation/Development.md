@@ -33,7 +33,7 @@ export default class Example extends Command {
 	 * this method is redundant as the command won't be published to Discord.
 	 */
 
-	override async executeInteraction(interaction: ChatInputCommandInteraction<"cached">) {
+	override async executeInteraction(interaction: ChatInputCommandInteraction) {
 		return interaction.reply({
 			content: `Example response.`
 		});
@@ -77,7 +77,7 @@ export default class Example extends Command {
 		};
 	}
 
-	override async executeInteraction(interaction: ChatInputCommandInteraction<"cached">) {
+	override async executeInteraction(interaction: ChatInputCommandInteraction) {
 		return interaction.reply({
 			content: `Example response.`
 		});
@@ -105,7 +105,7 @@ export default class Example extends Component {
 		super({ startsWith: "example" });
 	}
 
-	async execute(interaction: ButtonInteraction<"cached">) {
+	async execute(interaction: ButtonInteraction) {
 		return interaction.reply({
 			content: `You clicked a buttton.`
 		});

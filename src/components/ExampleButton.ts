@@ -7,7 +7,7 @@ export default class ExampleButton extends Component {
 		super({ startsWith: "ping" });
 	}
 
-	async execute(interaction: ButtonInteraction<"cached">) {
+	async execute(interaction: ButtonInteraction) {
 		return interaction.reply({
 			content: `Pong! Heartbeat: ${this.client.ws.ping}ms.`,
 			flags: MessageFlags.Ephemeral

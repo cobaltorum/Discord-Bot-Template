@@ -2,8 +2,10 @@ import {
 	ApplicationCommandData,
 	ApplicationCommandOptionType,
 	ApplicationCommandType,
+	ApplicationIntegrationType,
 	BaseMessageOptions,
 	ChatInputCommandInteraction,
+	InteractionContextType,
 	Message
 } from "discord.js";
 
@@ -29,6 +31,8 @@ export default class Greet extends Command {
 			name: this.name,
 			type: ApplicationCommandType.ChatInput,
 			description: this.description,
+			integrationTypes: [ApplicationIntegrationType.GuildInstall],
+			contexts: [InteractionContextType.Guild],
 			options: [
 				{
 					name: "target",
@@ -65,7 +69,7 @@ export default class Greet extends Command {
 		});
 	}
 
-	override async executeInteraction(interaction: ChatInputCommandInteraction<"cached">) {
+	override async executeInteraction(interaction: ChatInputCommandInteraction) {
 		const target = interaction.options.getUser("target", true);
 
 		if (!target) {

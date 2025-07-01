@@ -92,7 +92,7 @@ export default abstract class Command {
 	 * @param interaction The interaction that triggered the command.
 	 */
 
-	public executeInteraction?(interaction: CommandInteraction<"cached">): Awaitable<unknown>;
+	public executeInteraction?(interaction: CommandInteraction): Awaitable<unknown>;
 
 	/**
 	 * Handler that is called when the command is executed as a message command.

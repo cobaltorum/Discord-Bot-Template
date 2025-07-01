@@ -2,7 +2,9 @@ import {
 	ActionRowBuilder,
 	ApplicationCommandData,
 	ApplicationCommandType,
+	ApplicationIntegrationType,
 	ChatInputCommandInteraction,
+	InteractionContextType,
 	StringSelectMenuBuilder
 } from "discord.js";
 
@@ -23,11 +25,13 @@ export default class Color extends Command {
 		return {
 			name: this.name,
 			type: ApplicationCommandType.ChatInput,
-			description: this.description
+			description: this.description,
+			integrationTypes: [ApplicationIntegrationType.GuildInstall],
+			contexts: [InteractionContextType.Guild]
 		};
 	}
 
-	override async executeInteraction(interaction: ChatInputCommandInteraction<"cached">) {
+	override async executeInteraction(interaction: ChatInputCommandInteraction) {
 		const selectMenu = new StringSelectMenuBuilder()
 			.setCustomId("select-menu")
 			.setPlaceholder("Select color...")

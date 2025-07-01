@@ -13,16 +13,6 @@ export default class InteractionCreate extends EventListener {
 	}
 
 	async execute(interaction: Interaction): Promise<unknown> {
-		if (!interaction.inCachedGuild()) {
-			return interaction.isRepliable()
-				? interaction.reply({
-						content: `Interactions outside of guilds are not supported.`
-					})
-				: interaction.respond([
-						{ name: "Interactions outside of guilds are not supported.", value: "unsupported" }
-					]);
-		}
-
 		/**
 		 * By default, this event does not handle autocomplete interactions.
 		 * If you want to introduce autocomplete to your commands, you'll need to modify this if statement.
