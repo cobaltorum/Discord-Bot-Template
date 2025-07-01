@@ -1,4 +1,5 @@
 import {
+	ApplicationCommandData,
 	ApplicationCommandOptionType,
 	ApplicationCommandType,
 	BaseMessageOptions,
@@ -17,10 +18,17 @@ export default class Greet extends Command {
 	constructor() {
 		super({
 			name: "greet",
-			type: ApplicationCommandType.ChatInput,
 			aliases: ["hi"],
 			category: CommandCategory.General,
-			description: "Greet another person.",
+			description: "Greet another person."
+		});
+	}
+
+	override registerAppCommand(): ApplicationCommandData {
+		return {
+			name: this.name,
+			type: ApplicationCommandType.ChatInput,
+			description: this.description,
 			options: [
 				{
 					name: "target",
@@ -29,7 +37,7 @@ export default class Greet extends Command {
 					required: true
 				}
 			]
-		});
+		};
 	}
 
 	override async executeMessage(message: Message<true>, args: Args) {

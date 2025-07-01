@@ -1,5 +1,6 @@
 import {
 	ActionRowBuilder,
+	ApplicationCommandData,
 	ApplicationCommandType,
 	ChatInputCommandInteraction,
 	StringSelectMenuBuilder
@@ -13,10 +14,17 @@ export default class Color extends Command {
 	constructor() {
 		super({
 			name: "color",
-			type: ApplicationCommandType.ChatInput,
 			category: CommandCategory.General,
 			description: "Pick your favorite color."
 		});
+	}
+
+	override registerAppCommand(): ApplicationCommandData {
+		return {
+			name: this.name,
+			type: ApplicationCommandType.ChatInput,
+			description: this.description
+		};
 	}
 
 	override async executeInteraction(interaction: ChatInputCommandInteraction<"cached">) {

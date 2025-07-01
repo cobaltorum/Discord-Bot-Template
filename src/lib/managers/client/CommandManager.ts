@@ -44,6 +44,10 @@ export default class CommandManager {
 					continue;
 				}
 
+				if (typeof command.registerAppCommand === "function") {
+					command.data = command.registerAppCommand();
+				}
+
 				CommandManager.#cache.set(command.name, command);
 				Logger.custom("COMMANDS", `Cached "${command.name}".`, { color: "Purple" });
 				count++;

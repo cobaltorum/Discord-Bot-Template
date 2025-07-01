@@ -1,5 +1,6 @@
 import {
 	ActionRowBuilder,
+	ApplicationCommandData,
 	ApplicationCommandType,
 	ButtonBuilder,
 	ButtonStyle,
@@ -13,11 +14,18 @@ export default class Ping extends Command {
 	constructor() {
 		super({
 			name: "ping",
-			type: ApplicationCommandType.ChatInput,
 			aliases: ["pong", "latency"],
 			category: CommandCategory.Utility,
 			description: `Get the bot's websocket heartbeat and API latency.`
 		});
+	}
+
+	override registerAppCommand(): ApplicationCommandData {
+		return {
+			name: this.name,
+			type: ApplicationCommandType.ChatInput,
+			description: this.description
+		};
 	}
 
 	override async executeInteraction(interaction: ChatInputCommandInteraction<"cached">) {

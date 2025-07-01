@@ -8,8 +8,7 @@ export default class Stats extends Command {
 		super({
 			name: "stats",
 			category: CommandCategory.Developer,
-			description: "Get the bot's statistics.",
-			messageOnly: true
+			description: "Get the bot's statistics."
 		});
 	}
 

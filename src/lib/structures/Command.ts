@@ -37,14 +37,14 @@ export default abstract class Command {
 	 * Useful for documentation and help commands.
 	 */
 
-	public readonly description: string | null;
+	public readonly description: string;
 
 	/**
 	 * The application command data for the command.
 	 * This is used to register the command with Discord.
 	 */
 
-	public readonly data: ApplicationCommandData | null;
+	public data: ApplicationCommandData | null;
 
 	/**
 	 * The lexer to be used by the command.
@@ -61,25 +61,30 @@ export default abstract class Command {
 	/**
 	 * Constructs a new command.
 	 *
-	 * @param commandOptions The options for the command.
+	 * @param options The options for the command.
 	 */
 
-	public constructor(commandOptions: CommandOptions) {
-		const { category, messageOnly, aliases, flags: cmdFlags, ...rest } = commandOptions;
+	public constructor(options: CommandOptions) {
+		const { name, aliases, description, category, flags } = options;
 
-		this.name = commandOptions.name;
+		this.name = name;
 		this.aliases = aliases ?? [];
 		this.category = category;
-		this.description = "description" in rest ? (rest["description"] ?? null) : null;
+		this.description = description ?? null;
 
-		this.data = messageOnly ? null : { ...rest };
-		this.lexer = new Lexer({
-			quotes: []
-		});
+		// Initially set to null.
+		this.data = null;
 
-		const { flags, options } = Command._getStrategyOptions(cmdFlags ?? []);
-		this.strategy = new FlagStrategy({ flags, options });
+		this.lexer = new Lexer({ quotes: [] });
+		this.strategy = new FlagStrategy(Command._getStrategyOptions(flags ?? []));
 	}
+
+	/**
+	 * Handler used to register the command as an application command.
+	 * This method must return an object containing {@link ApplicationCommandData}.
+	 */
+
+	public registerAppCommand?(): ApplicationCommandData;
 
 	/**
 	 * Handler that is called when the command is executed as an application command.
@@ -159,7 +164,13 @@ export type CommandCategory = (typeof CommandCategory)[keyof typeof CommandCateg
  * This extends the {@link ApplicationCommandData} type provided by Discord.js.
  */
 
-export type CommandOptions = ApplicationCommandData & {
+export type CommandOptions = {
+	/**
+	 * The name of the command.
+	 */
+
+	name: string;
+
 	/**
 	 * The aliases of the command.
 	 * These are alternative names that can be used to invoke the command.
@@ -168,15 +179,17 @@ export type CommandOptions = ApplicationCommandData & {
 	aliases?: string[];
 
 	/**
+	 * The description of the command.
+	 * This is useful for a help command.
+	 */
+
+	description: string;
+
+	/**
 	 * The category of the command.
 	 * Useful for documentation and help commands, but required for all commands.
 	 */
 	category: keyof typeof CommandCategory;
-
-	/**
-	 * Whether the command can only be used as a message command.
-	 */
-	messageOnly?: boolean;
 
 	/**
 	 * The flags to pass onto the lexer.

@@ -1,5 +1,6 @@
 import {
 	ActionRowBuilder,
+	ApplicationCommandData,
 	ApplicationCommandType,
 	ChatInputCommandInteraction,
 	ModalBuilder,
@@ -13,10 +14,17 @@ export default class Register extends Command {
 	constructor() {
 		super({
 			name: "register",
-			type: ApplicationCommandType.ChatInput,
 			category: CommandCategory.General,
 			description: "Register yourself."
 		});
+	}
+
+	override registerAppCommand(): ApplicationCommandData {
+		return {
+			name: this.name,
+			type: ApplicationCommandType.ChatInput,
+			description: this.description
+		};
 	}
 
 	override async executeInteraction(interaction: ChatInputCommandInteraction<"cached">) {
