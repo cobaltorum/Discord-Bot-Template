@@ -34,10 +34,10 @@ export default abstract class Command {
 
 	/**
 	 * The description of the command.
-	 * Useful for documentation and help commands, but required for all commands.
+	 * Useful for documentation and help commands.
 	 */
 
-	public readonly description: string;
+	public readonly description: string | null;
 
 	/**
 	 * The application command data for the command.
@@ -70,7 +70,7 @@ export default abstract class Command {
 		this.name = commandOptions.name;
 		this.aliases = aliases ?? [];
 		this.category = category;
-		this.description = commandOptions.description;
+		this.description = "description" in rest ? (rest["description"] ?? null) : null;
 
 		this.data = messageOnly ? null : { ...rest };
 		this.lexer = new Lexer({
@@ -172,12 +172,6 @@ export type CommandOptions = ApplicationCommandData & {
 	 * Useful for documentation and help commands, but required for all commands.
 	 */
 	category: keyof typeof CommandCategory;
-
-	/**
-	 * The description of the command.
-	 * Useful for documentation and help commands, but required for all commands.
-	 */
-	description: string;
 
 	/**
 	 * Whether the command can only be used as a message command.
