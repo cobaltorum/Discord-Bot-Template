@@ -50,7 +50,7 @@ export default abstract class Command {
 	 * The lexer to be used by the command.
 	 */
 
-	private lexer: Lexer;
+	private readonly lexer: Lexer;
 
 	/**
 	 * The strategy to be used by the argument parser.
