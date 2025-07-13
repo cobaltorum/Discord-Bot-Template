@@ -6,7 +6,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coledotjs/discord-bot-template.git"
+    "url": "git+https://github.com/cobaltorum/discord-bot-template.git"
   },
   "keywords": [
     "Discord",
@@ -15,13 +15,13 @@
   ],
   "author": {
     "name": "coledotjs",
-    "url": "https://github.com/coledotjs"
+    "url": "https://github.com/cobaltorum"
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/coledotjs/discord-bot-template/issues"
+    "url": "https://github.com/cobaltorum/discord-bot-template/issues"
   },
-  "homepage": "https://github.com/coledotjs/discord-bot-template#readme",
+  "homepage": "https://github.com/cobaltorum/discord-bot-template#readme",
   "scripts": {
     "start": "node --no-deprecation dist/index.js",
     "compile": "tsc && tsc-alias",
